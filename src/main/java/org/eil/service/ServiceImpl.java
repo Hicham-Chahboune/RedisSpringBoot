@@ -1,16 +1,17 @@
 package org.eil.service;
 
 import org.eil.model.Response;
+import org.eil.service.interfaces.ICacheService;
+import org.eil.service.interfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-public class ServiceImpl implements IService{
+public class ServiceImpl implements IService {
 
     @Autowired
     ICacheService<Response> cacheService;
@@ -45,5 +46,11 @@ public class ServiceImpl implements IService{
             }
         }
         return responses;
+    }
+
+    @Override
+    public void update(String id) {
+        cacheService.delete(id);
+        ///
     }
 }

@@ -1,4 +1,4 @@
-package org.eil.service;
+package org.eil.service.interfaces;
 
 import org.eil.model.Response;
 
@@ -8,4 +8,6 @@ public interface IService {
     Long getThis(Long id);
 
     List<Response> getList(List<String> collect);
+
+    void update(String id);
 }

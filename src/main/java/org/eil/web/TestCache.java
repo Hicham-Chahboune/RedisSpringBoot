@@ -3,9 +3,7 @@ package org.eil.web;
 import lombok.AllArgsConstructor;
 import org.eil.model.Request;
 import org.eil.model.Response;
-import org.eil.service.IService;
-import org.eil.service.ServiceImpl;
-import org.springframework.cache.annotation.Cacheable;
+import org.eil.service.interfaces.IService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +24,11 @@ public class TestCache {
     @GetMapping()
     public List<Response> getThis(@RequestBody List<Request> requests){
         return service.getList(requests.stream().map(e->e.getId()).collect(Collectors.toList()));
+    }
+
+    @PutMapping("{id}")
+    public void update(@PathVariable String id){
+        service.update(id);
     }
 
 
