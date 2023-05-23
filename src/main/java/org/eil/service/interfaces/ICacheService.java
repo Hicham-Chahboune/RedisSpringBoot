@@ -6,6 +6,5 @@ public interface ICacheService <T>{
 
      void delete(String key);
 
-     String serialize(T resource);
-     T deserialize(String serializedContract);
+   
 }
